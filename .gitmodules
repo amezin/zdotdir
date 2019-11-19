@@ -16,3 +16,9 @@
 [submodule "pyenv"]
 	path = pyenv
 	url = https://github.com/pyenv/pyenv.git
+[submodule "pyenv-virtualenvwrapper"]
+	path = pyenv-virtualenvwrapper
+	url = https://github.com/pyenv/pyenv-virtualenvwrapper.git
+[submodule "pyenv-register"]
+	path = pyenv-register
+	url = https://github.com/doloopwhile/pyenv-register.git
