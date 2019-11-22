@@ -22,3 +22,6 @@
 [submodule "pyenv-register"]
 	path = pyenv-register
 	url = https://github.com/doloopwhile/pyenv-register.git
+[submodule "powerlevel9k"]
+	path = powerlevel9k
+	url = https://github.com/Powerlevel9k/powerlevel9k.git
