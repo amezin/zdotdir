@@ -1,1 +1,4 @@
-powerline
+#!/usr/bin/env zsh
+
+export PYTHONPATH="${ZDOTDIR}/powerline${PYTHONPATH:+:${PYTHONPATH}}"
+exec "${ZDOTDIR}/powerline/scripts/${0:t}" "$@"
