@@ -10,9 +10,6 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule "powerline"]
-	path = powerline
-	url = https://github.com/powerline/powerline.git
 [submodule "pyenv"]
 	path = pyenv
 	url = https://github.com/pyenv/pyenv.git

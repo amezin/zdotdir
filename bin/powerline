@@ -1,9 +1,0 @@
-#!/usr/bin/env zsh
-
-export PYTHONPATH="${ZDOTDIR}/powerline${PYTHONPATH:+:${PYTHONPATH}}"
-
-if command -v socat >/dev/null; then
-    exec "${ZDOTDIR}/powerline/client/powerline.sh" "$@"
-else
-    exec python "${ZDOTDIR}/powerline/client/powerline.py" "$@"
-fi
