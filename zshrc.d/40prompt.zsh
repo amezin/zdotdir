@@ -4,10 +4,20 @@ autoload -Uz promptinit
 promptinit
 
 if true; then
-    prompt powerlevel9k
-
     POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=$'\u258C'
     POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=$'\u2590'
+    POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u23F1'
+
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_THRESHOLD=0.01
+    POWERLEVEL9K_COMMAND_EXECUTION_TIME_PRECISION=2
+
+    VIRTUAL_ENV_DISABLE_PROMPT=1
+
+    POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs pyenv virtualenv)
+    POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs history time)
+
+    prompt powerlevel9k
+
 else
     export POWERLINE_CONFIG_PATHS="${ZDOTDIR}/powerline/powerline/config_files:${ZDOTDIR}/powerline-config"
 
