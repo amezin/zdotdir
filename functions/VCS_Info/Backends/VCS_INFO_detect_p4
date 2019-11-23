@@ -47,6 +47,8 @@ VCS_INFO_p4_get_server() {
 VCS_INFO_detect_p4() {
   local serverport p4where
 
+  VCS_INFO_check_com ${vcs_comm[cmd]} || return 1
+
   if zstyle -t ":vcs_info:p4:${usercontext}:${rrn}" use-server; then
     # Use "p4 where" to decide whether the path is under the
     # client workspace.
@@ -68,7 +70,6 @@ VCS_INFO_detect_p4() {
     return 1
   else
     [[ -n ${P4CONFIG} ]] || return 1
-    VCS_INFO_check_com ${vcs_comm[cmd]} || return 1
     vcs_comm[detect_need_file]="${P4CONFIG}"
     VCS_INFO_bydir_detect .
     return $?
