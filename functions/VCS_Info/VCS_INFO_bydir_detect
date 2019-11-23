@@ -6,12 +6,10 @@ setopt localoptions extendedglob nullglob NO_shwordsplit
 local dirname=$1
 local -a basedir
 local file
+local need_file=(${(s: :)${vcs_comm[detect_need_file]}})
 
-if [[ -n ${vcs_comm[detect_need_file]} ]] ; then
-    for file in ${(s: :)${vcs_comm[detect_need_file]}}; do
-        basedir=( (../)#${dirname}/${file}(/Y1:P:h:h) )
-        [[ -n "${basedir}" ]] && break
-    done
+if [[ -n ${need_file} ]] ; then
+    basedir=( (../)#${dirname}/(${(~j:|:)${need_file}})(Y1:P:h:h) )
 else
     basedir=( (../)#${dirname}(/Y1:P:h) )
 fi
