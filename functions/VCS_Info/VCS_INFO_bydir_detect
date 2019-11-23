@@ -2,30 +2,20 @@
 ## Written by Frank Terbeck <ft@bewatermyfriend.org>
 ## Distributed under the same BSD-ish license as zsh itself.
 
-setopt localoptions NO_shwordsplit
+setopt localoptions extendedglob nullglob NO_shwordsplit
 local dirname=$1
-local basedir="." file
-
-basedir=${basedir:P}
+local -a basedir
+local file
 
 if [[ -n ${vcs_comm[detect_need_file]} ]] ; then
-    while [[ ${basedir} != '/' ]]; do
-        [[ -r ${basedir} ]] || return 1
-        [[ -d ${basedir}/${dirname} ]] && {
-            for file in ${(s: :)${vcs_comm[detect_need_file]}}; do
-                [[ -e ${basedir}/${dirname}/${file} ]] && break 2
-            done
-        }
-        basedir=${basedir:h}
+    for file in ${(s: :)${vcs_comm[detect_need_file]}}; do
+        basedir=( (../)#${dirname}/${file}(/Y1:P:h:h) )
+        [[ -n "${basedir}" ]] && break
     done
 else
-    while [[ ${basedir} != '/' ]]; do
-        [[ -r ${basedir} ]] || return 1
-        [[ -d ${basedir}/${dirname} ]] && break
-        basedir=${basedir:h}
-    done
+    basedir=( (../)#${dirname}(/Y1:P:h) )
 fi
 
-[[ ${basedir} == "/" ]] && return 1
+[[ -n "${basedir}" ]] || return 1
 vcs_comm[basedir]=${basedir}
 return 0
