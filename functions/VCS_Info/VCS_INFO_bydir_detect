@@ -7,20 +7,24 @@ local dirname=$1
 local basedir="." file
 
 basedir=${basedir:P}
-while [[ ${basedir} != '/' ]]; do
-    [[ -r ${basedir} ]] || return 1
-    if [[ -n ${vcs_comm[detect_need_file]} ]] ; then
+
+if [[ -n ${vcs_comm[detect_need_file]} ]] ; then
+    while [[ ${basedir} != '/' ]]; do
+        [[ -r ${basedir} ]] || return 1
         [[ -d ${basedir}/${dirname} ]] && {
             for file in ${(s: :)${vcs_comm[detect_need_file]}}; do
                 [[ -e ${basedir}/${dirname}/${file} ]] && break 2
             done
         }
-    else
+        basedir=${basedir:h}
+    done
+else
+    while [[ ${basedir} != '/' ]]; do
+        [[ -r ${basedir} ]] || return 1
         [[ -d ${basedir}/${dirname} ]] && break
-    fi
-
-    basedir=${basedir:h}
-done
+        basedir=${basedir:h}
+    done
+fi
 
 [[ ${basedir} == "/" ]] && return 1
 vcs_comm[basedir]=${basedir}
