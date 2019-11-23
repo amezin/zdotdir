@@ -1,4 +1,5 @@
-source "${ZDOTDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+ZSH_AUTOSUGGEST_USE_ASYNC=1
+ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
 
-# Too slow
-#ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+source "${ZDOTDIR}/zsh-autosuggestions/zsh-autosuggestions.zsh"
