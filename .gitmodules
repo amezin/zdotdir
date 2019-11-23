@@ -22,3 +22,6 @@
 [submodule "powerlevel9k"]
 	path = powerlevel9k
 	url = https://github.com/Powerlevel9k/powerlevel9k.git
+[submodule "pyenv-virtualenv"]
+	path = pyenv-virtualenv
+	url = https://github.com/pyenv/pyenv-virtualenv.git
