@@ -53,13 +53,13 @@ vcs_info () {
     [[ -r . ]] || return 0
 
     local pat
-    local -i found retval
+    local -i retval
     local -a enabled disabled dps
-    local usercontext vcs rrn quiltmode
+    local usercontext vcs nearest_vcs nearest_worktree rrn quiltmode
     local -x LC_MESSAGES
     local -i maxexports
     local -a msgs
-    local -A vcs_comm hook_com backend_misc user_data
+    local -A vcs_comm nearest_vcs_comm hook_com backend_misc nearest_backend_misc user_data
 
     LC_MESSAGES=C
     if [[ -n ${LC_ALL} ]]; then
@@ -107,7 +107,6 @@ vcs_info () {
 
     VCS_INFO_maxexports
 
-    (( found = 0 ))
     for vcs in ${enabled} ; do
         [[ -n ${(M)disabled:#${vcs}} ]] && continue
         if (( ${+functions[VCS_INFO_detect_${vcs}]} == 0 )) ; then
@@ -117,14 +116,25 @@ vcs_info () {
         fi
         vcs_comm=()
         VCS_INFO_get_cmd
-        VCS_INFO_detect_${vcs} && (( found = 1 )) && break
+        if VCS_INFO_detect_${vcs}; then
+            if (( ${#vcs_comm[basedir]:P} > ${#nearest_worktree} )); then
+                nearest_vcs_comm=("${(kv)vcs_comm[@]}")
+                nearest_worktree=${nearest_vcs_comm[basedir]:P}
+                nearest_vcs="${vcs}"
+                nearest_backend_misc=("${(kv)backend_misc[@]}")
+            fi
+        fi
     done
 
-    (( found == 0 )) && {
+    [ -z "${nearest_vcs}" ] && {
         vcs='-quilt-'; quiltmode='standalone'
         VCS_INFO_quilt standalone || VCS_INFO_set --nvcs
         return 0
     }
+
+    vcs_comm=("${(kv)nearest_vcs_comm[@]}")
+    vcs="${nearest_vcs}"
+    backend_misc=("${(kv)nearest_backend_misc[@]}")
 
     VCS_INFO_hook "pre-get-data"
     retval=$?
