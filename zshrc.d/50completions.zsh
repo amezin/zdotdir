@@ -1,6 +1,7 @@
 fpath+="${ZDOTDIR}/zsh-completions/src"
 
 autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-${HOME}}/.zcompdump"
+autoload -Uz bashcompinit && bashcompinit
 
 zstyle ':completion:*' rehash true
 setopt COMPLETE_ALIASES
