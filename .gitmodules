@@ -10,18 +10,6 @@
 [submodule "zsh-history-substring-search"]
 	path = zsh-history-substring-search
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
-[submodule "pyenv"]
-	path = pyenv
-	url = https://github.com/pyenv/pyenv.git
-[submodule "pyenv-virtualenvwrapper"]
-	path = pyenv-virtualenvwrapper
-	url = https://github.com/pyenv/pyenv-virtualenvwrapper.git
-[submodule "pyenv-register"]
-	path = pyenv-register
-	url = https://github.com/doloopwhile/pyenv-register.git
 [submodule "powerlevel9k"]
 	path = powerlevel9k
 	url = https://github.com/Powerlevel9k/powerlevel9k.git
-[submodule "pyenv-virtualenv"]
-	path = pyenv-virtualenv
-	url = https://github.com/pyenv/pyenv-virtualenv.git
