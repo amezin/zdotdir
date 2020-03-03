@@ -1,1 +1,0 @@
-fpath=("${ZDOTDIR}/functions"/**/ "${fpath[@]}")
