@@ -20,5 +20,6 @@ POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator
 
 zstyle ':vcs_info:hg:*:*' get-revision yes
 zstyle ':vcs_info:hg:*:*' check-for-changes yes
+zstyle ':vcs_info:*:*:*' match-first no
 
 prompt powerlevel9k
