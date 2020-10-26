@@ -3,7 +3,10 @@ fpath+=("${ZDOTDIR}/powerlevel9k")
 autoload -Uz promptinit
 promptinit
 
-if [[ "$TERM" != "linux" ]]; then
+if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
+    POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u231B'
+    POWERLEVEL9K_TIME_ICON=$'\u231A'
+elif [[ "$TERM" != "linux" ]]; then
     POWERLEVEL9K_MODE=nerdfont-fontconfig
 fi
 
