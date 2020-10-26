@@ -1,0 +1,32 @@
+prompt_my_setup() {
+    local -r context_segment="%F{white}%(!.%K{red}.%K{black}) %(!.%B.)%n@%m%(!.%b.) "
+    local -r path_segment="%F{white}%K{blue} %B%~%b "
+    local -r vcs_segment="%1(V.%F{black}%K{green} %1v .)"
+
+    PROMPT="${context_segment}${path_segment}${vcs_segment}%f%k "
+
+    if [[ "$TERM" != "linux" ]]; then
+        local -r clock_icon=$'\u231A '
+        local -r fail_icon=$'\u2718 '
+    else
+        local -r clock_icon=''
+        local -r fail_icon=''
+    fi
+
+    local -r status_segment="%(?..%F{white}%K{red} ${fail_icon}%B%?%b )"
+    local -r datetime_segment="%F{black}%K{white} ${clock_icon}%D{%H:%M:%S %d.%m.%y} "
+    RPROMPT="${status_segment}${datetime_segment}%f%k"
+
+    zstyle ':vcs_info:*' formats "%s %b%m %u%c"
+    zstyle ':vcs_info:*' actionformats "%s %b[%a]%m %u%c"
+
+    autoload -Uz add-zsh-hook vcs_info
+
+    add-zsh-hook precmd () {
+        vcs_info
+
+        psvar=("${vcs_info_msg_0_}")
+    }
+}
+
+prompt_my_setup "$@"
