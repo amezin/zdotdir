@@ -27,6 +27,6 @@ VIRTUAL_ENV_DISABLE_PROMPT=1
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs pyenv virtualenv)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs time)
 
-zstyle ':vcs_info:*' find-deepest yes
+zstyle ':vcs_info:*' choose-closest-backend yes
 
 prompt powerlevel9k
