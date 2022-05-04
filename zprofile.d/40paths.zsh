@@ -9,7 +9,7 @@ prepend_path_if_exists() {
 }
 
 prepend_path_if_exists /opt/local/bin /opt/local/sbin
-prepend_path_if_exists /usr/lib/ccache /usr/lib/ccache/bin /usr/local/opt/ccache/libexec
+#prepend_path_if_exists /usr/lib/ccache /usr/lib/ccache/bin /usr/local/opt/ccache/libexec
 prepend_path_if_exists "/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 prepend_path_if_exists /Applications/CMake.app/Contents/bin
 prepend_path_if_exists /home/linuxbrew/.linuxbrew/bin
