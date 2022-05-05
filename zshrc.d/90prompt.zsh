@@ -6,8 +6,10 @@ promptinit
 if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
     POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u231B'
     POWERLEVEL9K_TIME_ICON=$'\u231A'
+    POWERLEVEL9K_CUSTOM_NIX_SHELL_ICON='nix'
 elif [[ "$TERM" != "linux" ]]; then
     POWERLEVEL9K_MODE=nerdfont-fontconfig
+    POWERLEVEL9K_CUSTOM_NIX_SHELL_ICON=$'\uF313'
 fi
 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=
@@ -24,7 +26,9 @@ POWERLEVEL9K_STATUS_OK=false
 
 VIRTUAL_ENV_DISABLE_PROMPT=1
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs pyenv virtualenv)
+POWERLEVEL9K_CUSTOM_NIX_SHELL='echo -n ${(M)IN_NIX_SHELL:#(pure|impure)}'
+
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir vcs pyenv virtualenv custom_nix_shell)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(command_execution_time status root_indicator background_jobs time)
 
 zstyle ':vcs_info:*' choose-closest-backend yes
