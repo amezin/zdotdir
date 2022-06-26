@@ -12,7 +12,7 @@
 	url = https://github.com/amezin/powerlevel9k.git
 [submodule "fast-syntax-highlighting"]
 	path = fast-syntax-highlighting
-	url = https://github.com/zdharma/fast-syntax-highlighting.git
+	url = https://github.com/z-shell/F-Sy-H.git
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/amezin/zsh.git
