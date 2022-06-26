@@ -7,7 +7,7 @@ if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
     POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u231B'
     POWERLEVEL9K_TIME_ICON=$'\u231A'
     POWERLEVEL9K_CUSTOM_NIX_SHELL_ICON='nix'
-elif [[ "$TERM" != "linux" ]]; then
+elif [[ "$TERM" != (dumb|linux|*bsd*|eterm*) ]]; then
     POWERLEVEL9K_MODE=nerdfont-fontconfig
     POWERLEVEL9K_CUSTOM_NIX_SHELL_ICON=$'\uF313'
 fi
