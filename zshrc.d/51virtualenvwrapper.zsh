@@ -6,7 +6,7 @@ if (( $+commands[virtualenvwrapper_lazy.sh] )); then
     local PROJECT_DIR
     local PROJECT_VIRTUAL_ENV
 
-    for PROJECT_FILE in "${WORKON_HOME:P}"/*/.project; do
+    for PROJECT_FILE in "${WORKON_HOME:P}"/*/.project(N); do
       local TRY_PROJECT_DIR="$(cat "$PROJECT_FILE")"
       TRY_PROJECT_DIR="${TRY_PROJECT_DIR:P}"
       if [[ "${PWD:P}/" == "$TRY_PROJECT_DIR"/* ]]; then
