@@ -3,11 +3,23 @@ fpath+=("${ZDOTDIR}/powerlevel9k")
 autoload -Uz promptinit
 promptinit
 
-if [[ "$LC_TERMINAL" == "iTerm2" ]]; then
-    POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u231B'
-    POWERLEVEL9K_TIME_ICON=$'\u231A'
-elif [[ "$TERM" != (dumb|linux|*bsd*|eterm*) ]]; then
-    POWERLEVEL9K_MODE=nerdfont-fontconfig
+if [[ -z "$POWERLEVEL9K_MODE" ]]; then
+    if [[ -n "$DESKTOP_SESSION" || -n "$XDG_DESKTOP_SESSION" || -n "$XDG_CURRENT_DESKTOP" ]]; then
+        if command -V fc-match >/dev/null; then
+            if [[ "$(fc-match -f '%{family[0]}' ':charset=f489')" == "Symbols Nerd Font" ]]; then
+                POWERLEVEL9K_MODE=nerdfont-fontconfig
+            fi
+        fi
+    fi
+fi
+
+if [[ -z "$POWERLEVEL9K_MODE" ]]; then
+    POWERLEVEL9K_MODE=compatibility
+
+    if [[ "$TERM" != (dumb|linux|*bsd*|eterm*) ]]; then
+        POWERLEVEL9K_EXECUTION_TIME_ICON=$'\u231B'
+        POWERLEVEL9K_TIME_ICON=$'\u231A'
+    fi
 fi
 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=
