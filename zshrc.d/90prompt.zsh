@@ -14,6 +14,12 @@ if [[ -z "$POWERLEVEL9K_MODE" ]]; then
 fi
 
 if [[ -z "$POWERLEVEL9K_MODE" ]]; then
+    if [[ -n "$SSH_CONNECTION" ]]; then
+        echo "For better experience, pass POWERLEVEL9K_MODE variable through SSH connection:"
+        echo "echo 'SendEnv POWERLEVEL9K_MODE' >> ~/.ssh/config # on the client side"
+        echo "echo 'AcceptEnv POWERLEVEL9K_MODE' >> /etc/ssh/sshd_config # on the server side"
+    fi
+
     POWERLEVEL9K_MODE=compatibility
 
     POWERLEVEL9K_VCS_GIT_ICON=git
@@ -33,6 +39,8 @@ if [[ -z "$POWERLEVEL9K_MODE" ]]; then
         POWERLEVEL9K_VCS_TAG_ICON=$'\U1F3F7'
     fi
 fi
+
+export POWERLEVEL9K_MODE  # for SSH passthrough
 
 POWERLEVEL9K_LEFT_SEGMENT_SEPARATOR=
 POWERLEVEL9K_RIGHT_SEGMENT_SEPARATOR=
