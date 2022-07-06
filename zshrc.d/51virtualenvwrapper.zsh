@@ -4,7 +4,7 @@ elif [[ -e /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh ]]; then
   . /usr/share/virtualenvwrapper/virtualenvwrapper_lazy.sh
 fi
 
-if typeset -f workon > /dev/null; then
+if (( $+functions[workon] )); then
   function workon_cwd {
     local PROJECT_FILE
     local PROJECT_DIR
