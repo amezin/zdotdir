@@ -1,3 +1,5 @@
+typeset -U PATH path
+
 prepend_path_if_exists() {
     for p in "$@"
     do
