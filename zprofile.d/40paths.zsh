@@ -26,7 +26,8 @@ fi
 
 if command -v python3 >/dev/null
 then
-    prepend_path_if_exists "$(python3 -c 'import site; print(site.getuserbase())')/bin"
+    prepend_path_if_exists "$(python3 -c 'import sysconfig; print(sysconfig.get_path("scripts"))')"
+    prepend_path_if_exists "$(python3 -c 'import sysconfig; print(sysconfig.get_path("scripts", "posix_user"))')"
 fi
 
 prepend_path_if_exists "$HOME/.local/bin"
