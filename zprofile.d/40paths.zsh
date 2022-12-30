@@ -24,6 +24,11 @@ then
     prepend_path_if_exists "$(ruby -rrubygems -e 'puts Gem.user_dir')/bin"
 fi
 
+if command -v python3 >/dev/null
+then
+    prepend_path_if_exists "$(python3 -c 'import site; print(site.getuserbase())')/bin"
+fi
+
 prepend_path_if_exists "$HOME/.local/bin"
 prepend_path_if_exists "$ZDOTDIR/bin"
 
