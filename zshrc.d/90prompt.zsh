@@ -6,7 +6,10 @@ promptinit
 if [[ -z "$POWERLEVEL9K_MODE" ]]; then
     if [[ -n "$DESKTOP_SESSION" || -n "$XDG_DESKTOP_SESSION" || -n "$XDG_CURRENT_DESKTOP" ]]; then
         if command -V fc-match >/dev/null; then
-            if [[ "$(fc-match -f '%{family[0]}' ':charset=f489')" == "Symbols Nerd Font"* ]]; then
+            if [[ "$(fc-match -f '%{family[0]}' ':charset=f489')" == "Symbols Nerd Font"* ]] ||
+                [[ "$(fc-match -f '%{family[0]}' ':charset=f0c3')" == "Symbols Nerd Font"* ]] ||
+                [[ "$(fc-match -f '%{family[0]}' ':charset=e72d')" == "Symbols Nerd Font"* ]]
+            then
                 POWERLEVEL9K_MODE=nerdfont-fontconfig
             fi
         fi
