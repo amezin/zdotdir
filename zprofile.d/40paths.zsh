@@ -18,6 +18,7 @@ prepend_path_if_exists /home/linuxbrew/.linuxbrew/bin
 prepend_path_if_exists "$HOME/Library/Android/sdk/platform-tools"
 prepend_path_if_exists "/Applications/Wine Devel.app/Contents/Resources/wine/bin"
 prepend_path_if_exists "$HOME/depot_tools"
+prepend_path_if_exists "$HOME/.krew/bin"
 
 if command -v ruby >/dev/null
 then
