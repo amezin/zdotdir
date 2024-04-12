@@ -1,4 +1,4 @@
-fpath+="${ZDOTDIR}/zsh-completions/src"
+source "${ZDOTDIR}/zsh-completions/zsh-completions.plugin.zsh"
 
 autoload -Uz compinit && compinit -C -d "${ZDOTDIR:-${HOME}}/.zcompdump"
 autoload -Uz bashcompinit && bashcompinit
