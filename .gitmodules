@@ -13,6 +13,7 @@
 [submodule "fast-syntax-highlighting"]
 	path = fast-syntax-highlighting
 	url = https://github.com/amezin/F-Sy-H.git
+	branch = fix/chroma
 [submodule "zsh"]
 	path = zsh
 	url = https://github.com/amezin/zsh.git
